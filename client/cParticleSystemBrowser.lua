@@ -2628,39 +2628,39 @@ function particleSystemBrowser:Lchat(args)
 end
 
 function particleSystemBrowser:KeyDown(args)
-if self.enabled then
-	if args.key == 39 then -- Navigate to next particle
-		if self.pid == 2600 then
-			self.pid = 1
-		else
-			self.pid = self.pid + 1
+	if self.enabled then
+		if args.key == 39 then -- Navigate to next particle
+			if self.pid == 2600 then
+				self.pid = 1
+			else
+				self.pid = self.pid + 1
+			end
+			self:fireParticle(self.pid)
+		elseif args.key == 32 then -- Fire current particle
+			self:fireParticle(self.pid)
+		elseif args.key == 37 then -- Navigate to previous particle
+			if self.pid == 1 then
+				self.pid = 2600
+			else
+				self.pid = self.pid - 1
+			end
+			self:fireParticle(self.pid)
+		elseif args.key == 38 then -- Jump forward by 100 effects
+			if self.pid + 100 > 2600 then
+				self.pid = 1
+			else
+				self.pid = self.pid + 50
+			end
+			self:fireParticle(self.pid)
+		elseif args.key == 40 then -- Jump backward by 100 effects
+			if self.pid - 100 < 1 then
+				self.pid = 1
+			else
+				self.pid = self.pid - 50
+			end
+			self:fireParticle(self.pid)
 		end
-		self:fireParticle(self.pid)
-	elseif args.key == 32 then -- Fire current particle
-		self:fireParticle(self.pid)
-	elseif args.key == 37 then -- Navigate to previous particle
-		if self.pid == 1 then
-			self.pid = 2600
-		else
-			self.pid = self.pid - 1
-		end
-		self:fireParticle(self.pid)
-	elseif args.key == 38 then -- Jump forward by 100 effects
-		if self.pid + 100 > 2600 then
-			self.pid = 1
-		else
-			self.pid = self.pid + 50
-		end
-		self:fireParticle(self.pid)
-	elseif args.key == 40 then -- Jump backward by 100 effects
-		if self.pid - 100 < 1 then
-			self.pid = 1
-		else
-			self.pid = self.pid - 50
-		end
-		self:fireParticle(self.pid)
 	end
-end
 end
 function particleSystemBrowser:fireParticle(pid)
 	if self.particle ~= nil then
