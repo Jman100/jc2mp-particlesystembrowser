@@ -2677,7 +2677,6 @@ end
 function particleSystemBrowser:Rend()
 	if self.enabled then
 		local name = self.particlesystemarray[self.pid]
-		print(self.pid)
 		local text = "Number: " .. self.pid .. "/2600  Path: " .. name
 		local text2 = "Left/Right to change, Up/Down to change by 100, Space to re-fire"
 		
